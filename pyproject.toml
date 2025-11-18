@@ -1,0 +1,14 @@
+[project]
+name = "openapi-clients-analysis"
+version = "0.1.0"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11"
+dependencies = ["kiota-client", "openapi-generator-client"]
+
+[tool.uv.sources]
+kiota-client = { workspace = true }
+openapi-generator-client = { workspace = true }
+
+[tool.uv.workspace]
+members = ["clients/python/kiota", "clients/python/openapi-generator"]

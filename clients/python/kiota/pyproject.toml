@@ -1,0 +1,13 @@
+[project]
+name = "kiota-client"
+version = "0.1.0"
+license = "Apache-2.0"
+requires-python = ">=3.11"
+dependencies = [
+    "microsoft-kiota-abstractions==1.9.7",
+    "microsoft-kiota-http==1.9.7",
+    "microsoft-kiota-serialization-form==1.9.7",
+    "microsoft-kiota-serialization-json==1.9.7",
+    "microsoft-kiota-serialization-multipart==1.9.7",
+    "microsoft-kiota-serialization-text==1.9.7",
+]

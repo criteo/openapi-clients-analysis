@@ -1,0 +1,440 @@
+# yaml-language-server: $schema=https://spec.openapis.org/oas/3.0/schema/2021-09-28
+openapi: 3.0.4
+info:
+  title: Playground API
+  version: 1.0.0
+paths:
+  /api/sandbox/hello:
+    get:
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: Hello, World!
+  /api/sandbox/dict:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: integer
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+              example:
+                first: 1
+                second: 2
+                third: 3
+  /api/sandbox/dict-of-dict:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: object
+                additionalProperties:
+                  type: integer
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties:
+                    type: integer
+              example:
+                dummy:
+                  first: 1
+                  second: 2
+                  third: 3
+  /api/sandbox/arrayofarray:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: array
+                items:
+                  type: integer
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: integer
+              example:
+                - [1, 2, 3]
+                - [4, 5, 6]
+  /api/sandbox/arrayofarrayrecord:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/Int32ListArrayRecord"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Int32ListArrayRecord"
+              example:
+                - items: [1, 2, 3]
+                - items: [4, 5, 6]
+  /api/sandbox/sbyte/{sb}:
+    get:
+      parameters:
+        - name: sb
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int8
+            minimum: -128
+            maximum: 127
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int8
+              example: 42
+  /api/sandbox/ints-path/{ub}-{s}-{us}-{i}-{ui}-{l}-{ul}:
+    get:
+      parameters:
+        - name: ub
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: uint8
+            minimum: 0
+            maximum: 255
+        - name: s
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int16
+        - name: us
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: uint16
+            minimum: 0
+        - name: i
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: ui
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: uint32
+            minimum: 0
+        - name: l
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: ul
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: uint64
+            minimum: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SandboxIntegers"
+              example:
+                ub: 2
+                s: 3
+                us: 4
+                i: 5
+                ui: 6
+                l: 7
+                ul: 8
+  /api/sandbox/ints-query:
+    post:
+      parameters:
+        - name: ub
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: uint8
+            minimum: 0
+            maximum: 255
+        - name: s
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int16
+        - name: us
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: uint16
+            minimum: 0
+        - name: i
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: ui
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: uint32
+            minimum: 0
+        - name: l
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: ul
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: uint64
+            minimum: 0
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SandboxIntegers"
+              example:
+                ub: 2
+                s: 3
+                us: 4
+                i: 5
+                ui: 6
+                l: 7
+                ul: 8
+  /api/sandbox/ints-body:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SandboxIntegers"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SandboxIntegers"
+              example:
+                ub: 2
+                s: 3
+                us: 4
+                i: 5
+                ui: 6
+                l: 7
+                ul: 8
+  /api/sandbox/bytearray:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+              example: "binaryvalue"
+  /api/sandbox/inheritance:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SandboxInheritance"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SandboxInheritance"
+              example:
+                data: "AAAAAAAAAAAAAAAA"
+  /api/sandbox/mixed-params/{fromRoute}:
+    post:
+      parameters:
+        - name: fromRoute
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: fromQuery
+          in: query
+          required: true
+          schema:
+            type: boolean
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SandboxInheritance"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SandboxInheritance"
+              example:
+                data: "AAAAAAAAAAAAAAAA"
+  /api/sandbox/multiple-from-route/{first}/{second}/{third}:
+    post:
+      parameters:
+        - name: first
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: second
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: third
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+              example: "first,second,third"
+components:
+  schemas:
+    SandboxIntegers:
+      type: object
+      required:
+        - ub
+        - s
+        - us
+        - i
+        - ui
+        - l
+        - ul
+      properties:
+        ub:
+          type: integer
+          format: uint8
+          minimum: 0
+          maximum: 255
+        s:
+          type: integer
+          format: int16
+        us:
+          type: integer
+          format: uint16
+          minimum: 0
+        i:
+          type: integer
+          format: int32
+        ui:
+          type: integer
+          format: uint32
+          minimum: 0
+        l:
+          type: integer
+          format: int64
+        ul:
+          type: integer
+          format: uint64
+          minimum: 0
+    Int32ListArrayRecord:
+      type: object
+      required:
+        - items
+      properties:
+        items:
+          type: array
+          items:
+            type: integer
+    SandboxImplementation:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: string
+          format: byte
+    SandboxInheritance:
+      allOf:
+        - $ref: "#/components/schemas/SandboxImplementation"

@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "clients", "clients", "{9E1204E0-9905-4F33-AF54-7558FAE362D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet", "dotnet", "{BFECEE7F-3237-4D52-BC3B-D344F53E81FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Criteo.OpenApiClientsAnalysis.Kiota.Client", "clients\dotnet\Criteo.OpenApiClientsAnalysis.Kiota.Client\Criteo.OpenApiClientsAnalysis.Kiota.Client.csproj", "{ED9DDB3E-ED9D-47BB-AF6A-567B54C2E76C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Criteo.OpenApiClientsAnalysis.NSwag.Client", "clients\dotnet\Criteo.OpenApiClientsAnalysis.NSwag.Client\Criteo.OpenApiClientsAnalysis.NSwag.Client.csproj", "{D554723A-6758-4563-86C2-1E95DF1BFA2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Criteo.OpenApiClientsAnalysis.OpenApiGenerator.Client", "clients\dotnet\Criteo.OpenApiClientsAnalysis.OpenApiGenerator.Client\Criteo.OpenApiClientsAnalysis.OpenApiGenerator.Client.csproj", "{502674C6-4A95-4119-B5F9-E4EB5853229F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Criteo.OpenApiClientsAnalysis.UTest", "Criteo.OpenApiClientsAnalysis.UTest\Criteo.OpenApiClientsAnalysis.UTest.csproj", "{2A08BFF7-4E96-4C07-8C6B-8D36D4D9F8E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED9DDB3E-ED9D-47BB-AF6A-567B54C2E76C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED9DDB3E-ED9D-47BB-AF6A-567B54C2E76C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED9DDB3E-ED9D-47BB-AF6A-567B54C2E76C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED9DDB3E-ED9D-47BB-AF6A-567B54C2E76C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D554723A-6758-4563-86C2-1E95DF1BFA2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D554723A-6758-4563-86C2-1E95DF1BFA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D554723A-6758-4563-86C2-1E95DF1BFA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D554723A-6758-4563-86C2-1E95DF1BFA2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{502674C6-4A95-4119-B5F9-E4EB5853229F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{502674C6-4A95-4119-B5F9-E4EB5853229F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{502674C6-4A95-4119-B5F9-E4EB5853229F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{502674C6-4A95-4119-B5F9-E4EB5853229F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A08BFF7-4E96-4C07-8C6B-8D36D4D9F8E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A08BFF7-4E96-4C07-8C6B-8D36D4D9F8E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A08BFF7-4E96-4C07-8C6B-8D36D4D9F8E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A08BFF7-4E96-4C07-8C6B-8D36D4D9F8E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BFECEE7F-3237-4D52-BC3B-D344F53E81FC} = {9E1204E0-9905-4F33-AF54-7558FAE362D1}
+		{ED9DDB3E-ED9D-47BB-AF6A-567B54C2E76C} = {BFECEE7F-3237-4D52-BC3B-D344F53E81FC}
+		{D554723A-6758-4563-86C2-1E95DF1BFA2B} = {BFECEE7F-3237-4D52-BC3B-D344F53E81FC}
+		{502674C6-4A95-4119-B5F9-E4EB5853229F} = {BFECEE7F-3237-4D52-BC3B-D344F53E81FC}
+	EndGlobalSection
+EndGlobal
