@@ -22,11 +22,11 @@ dotnet-tool-restore:
 
 kiota-csharp: dotnet-tool-restore
 	rm -rf $(KIOTA_CSHARP_DIR)/client
-	dotnet kiota generate -d $(OPENAPI_SPEC) -l CSharp -n Criteo.OpenApiClientsAnalysis.Kiota.Client -o $(KIOTA_CSHARP_DIR)/client
+	dotnet kiota generate --openapi $(OPENAPI_SPEC) -l CSharp -n Criteo.OpenApiClientsAnalysis.Kiota.Client -o $(KIOTA_CSHARP_DIR)/client
 
 kiota-python: dotnet-tool-restore
 	rm -rf $(KIOTA_PYTHON_DIR)/client
-	dotnet kiota generate -d $(OPENAPI_SPEC) -l Python -o $(KIOTA_PYTHON_DIR)/client
+	dotnet kiota generate --openapi $(OPENAPI_SPEC) -l Python -o $(KIOTA_PYTHON_DIR)/client
 
 nswag-csharp: dotnet-tool-restore
 	rm -rf $(NSWAG_CSHARP_DIR)/client
