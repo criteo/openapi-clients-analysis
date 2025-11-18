@@ -1,31 +1,34 @@
-OPENAPI_SPEC = openapi.yaml
-OPENAPI_GENERATOR_VERSION = 7.17.0
+OPENAPI_SPEC=openapi.yaml
+OPENAPI_GENERATOR_VERSION=7.17.0
 
-CLIENTS_DIR = clients
-TMP_DIR = $(CLIENTS_DIR)/tmp
-DOTNET_CLIENTS_DIR = $(CLIENTS_DIR)/dotnet
-PYTHON_CLIENTS_DIR = $(CLIENTS_DIR)/python
+CLIENTS_DIR=clients
+TMP_DIR=$(CLIENTS_DIR)/tmp
+DOTNET_CLIENTS_DIR=$(CLIENTS_DIR)/dotnet
+PYTHON_CLIENTS_DIR=$(CLIENTS_DIR)/python
 
-KIOTA_CSHARP_DIR = $(DOTNET_CLIENTS_DIR)/Criteo.OpenApiClientsAnalysis.Kiota.Client
-NSWAG_CSHARP_DIR = $(DOTNET_CLIENTS_DIR)/Criteo.OpenApiClientsAnalysis.NSwag.Client
-OAG_CSHARP_DIR = $(DOTNET_CLIENTS_DIR)/Criteo.OpenApiClientsAnalysis.OpenApiGenerator.Client
+KIOTA_CSHARP_DIR=$(DOTNET_CLIENTS_DIR)/Criteo.OpenApiClientsAnalysis.Kiota.Client
+NSWAG_CSHARP_DIR=$(DOTNET_CLIENTS_DIR)/Criteo.OpenApiClientsAnalysis.NSwag.Client
+OAG_CSHARP_DIR=$(DOTNET_CLIENTS_DIR)/Criteo.OpenApiClientsAnalysis.OpenApiGenerator.Client
 
-KIOTA_PYTHON_DIR = $(PYTHON_CLIENTS_DIR)/kiota
-OAG_PYTHON_DIR = $(PYTHON_CLIENTS_DIR)/openapi-generator
+KIOTA_PYTHON_DIR=$(PYTHON_CLIENTS_DIR)/kiota
+OAG_PYTHON_DIR=$(PYTHON_CLIENTS_DIR)/openapi-generator
 
-.PHONY: all kiota-csharp kiota-python nswag-csharp openapi-generator-csharp openapi-generator-python
+.PHONY: all dotnet-tool-restore kiota-csharp kiota-python nswag-csharp openapi-generator-csharp openapi-generator-python
 
 all: kiota-csharp kiota-python nswag-csharp openapi-generator-csharp openapi-generator-python
 
-kiota-csharp:
+dotnet-tool-restore:
+	dotnet tool restore
+
+kiota-csharp: dotnet-tool-restore
 	rm -rf $(KIOTA_CSHARP_DIR)/client
 	dotnet kiota generate -d $(OPENAPI_SPEC) -l CSharp -n Criteo.OpenApiClientsAnalysis.Kiota.Client -o $(KIOTA_CSHARP_DIR)/client
 
-kiota-python:
+kiota-python: dotnet-tool-restore
 	rm -rf $(KIOTA_PYTHON_DIR)/client
 	dotnet kiota generate -d $(OPENAPI_SPEC) -l Python -o $(KIOTA_PYTHON_DIR)/client
 
-nswag-csharp:
+nswag-csharp: dotnet-tool-restore
 	rm -rf $(NSWAG_CSHARP_DIR)/client
 	dotnet nswag openapi2csclient /input:$(OPENAPI_SPEC) /namespace:Criteo.OpenApiClientsAnalysis.NSwag.Client /output:$(NSWAG_CSHARP_DIR)/client/Client.cs
 
