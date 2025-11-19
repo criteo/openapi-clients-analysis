@@ -34,11 +34,11 @@ nswag-csharp: dotnet-tool-restore
 
 openapi-generator-csharp:
 	rm -rf $(OAG_CSHARP_DIR)/client $(TMP_DIR)
-	uvx openapi-generator-cli@$(OPENAPI_GENERATOR_VERSION) generate -i $(OPENAPI_SPEC) -g csharp -o $(TMP_DIR) --package-name Criteo.OpenApiClientsAnalysis.OpenApiGenerator.Client --additional-properties=targetFramework=net8.0
+	uvx openapi-generator-cli[jdk4py]@$(OPENAPI_GENERATOR_VERSION) generate -i $(OPENAPI_SPEC) -g csharp -o $(TMP_DIR) --package-name Criteo.OpenApiClientsAnalysis.OpenApiGenerator.Client --additional-properties=targetFramework=net8.0
 	mv $(TMP_DIR)/src/Criteo.OpenApiClientsAnalysis.OpenApiGenerator.Client $(OAG_CSHARP_DIR)/client
 	mv $(OAG_CSHARP_DIR)/client/Criteo.OpenApiClientsAnalysis.OpenApiGenerator.Client.csproj $(OAG_CSHARP_DIR)/
 	rm -rf $(TMP_DIR)
 
 openapi-generator-python:
 	rm -rf $(OAG_PYTHON_DIR)/client
-	uvx openapi-generator-cli@$(OPENAPI_GENERATOR_VERSION) generate -i $(OPENAPI_SPEC) -g python -o $(OAG_PYTHON_DIR)/client --additional-properties=library=asyncio
+	uvx openapi-generator-cli[jdk4py]@$(OPENAPI_GENERATOR_VERSION) generate -i $(OPENAPI_SPEC) -g python -o $(OAG_PYTHON_DIR)/client --additional-properties=library=asyncio
